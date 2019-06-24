@@ -1,2 +1,2 @@
 # ProjectEuler
-Solved Euler's Project with Python
+Python solution to different algorithm problems from Euler's Project, Leetcode, Codewars, etc.
