@@ -15,9 +15,9 @@ class Solution:
         self.F_c = ((c-s+1)*v)/2
 
         # calculate the F-1 inverse of the CDF function
-        self.Y_u_1 = lambda x: math.sqrt(2*((c-s+1)*x)/v) + s -1
+        self.Y_u_1 = lambda u: math.sqrt(2*((c-s+1)*u)/v) + s -1
 
-        self.Y_u_2 = lambda x: m+ 1 - math.sqrt((2*(m+1-c)*(1-x))/v)
+        self.Y_u_2 = lambda u: m+ 1 - math.sqrt((2*(m+1-c)*(1-u))/v)
 
 
     def generate(self):
