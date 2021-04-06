@@ -13,10 +13,12 @@ In this case, the base of the triangle is [1] and [8]. The most frequent value [
 
 # O(1) solution
 
-we will consider the triangular shape as the pdf of the probability distribution that we want to estimate.
-in order to estimate the distribution in O(1), we will consider it as a continuous distribution.
-To get random values with the desired distribution, we will [the inverse transform sampling](https://en.wikipedia.org/wiki/Inverse_transform_sampling).
-so we will generete random value with Uniform [0, 1] and get the variable with `F` distribution. So we will first calculate the CDF and get it's inverse.
+we will consider the triangular shape as the `pdf` of the probability distribution that we want to estimate. In order to estimate the distribution in O(1), we will consider it as a continuous distribution.
+
+To get random values with the desired distribution, we will use [the inverse transform sampling](https://en.wikipedia.org/wiki/Inverse_transform_sampling).
+so we will generete random value with Uniform [0, 1] and get the variable with the desired distribution.
+
+So we will first calculate the CDF and get it's inverse.
 
 For it to be a valid distribution, the sum of all probability should be equal to 1.
 
@@ -40,15 +42,13 @@ the CDF of this probability distribution is defined as :
 
 ![\Large equation5](https://latex.codecogs.com/svg.latex?\Large&space;F(x)=P(X<=x)=\int_{s-1}^{x}f(y)dy)
 
-this is equal to the area under the curve:
-
 ### **For x <= c:**
 
 ![\Large equation6](https://latex.codecogs.com/svg.latex?\Large&space;F(x)=\frac{h.(x-s+1)}{2})
 
 where `h` is the probability at point `x`
 
-to calculate the `h` we will the equality between tangente:
+to calculate the `h` we will use the equality between tangente of the left angle:
 
 ![\Large equation7](https://latex.codecogs.com/svg.latex?\Large&space;\tan(\alpha)=\frac{h}{x-s+1}=\frac{v}{c-s+1})
 
@@ -67,7 +67,7 @@ we get the inverse transform:
 
 ### **For x >= c:**
 
-The CDF is the area under the curve, for `x>=c` it is equals to `1-P(X>x)`
+The CDF is the area under the curve for `x>=c` it is equals to `1-P(X>x)`
 
 ![\Large equation6](https://latex.codecogs.com/svg.latex?\Large&space;F(x)=1-\frac{h.(m+1-x)}{2})
 
@@ -95,6 +95,6 @@ Last but not least, to get the discrete values from the continues values.
 
 - we will generate interger value `x` for all float values between `x-0.5` and `x+0.5`
 
-- we will generate integer value `c` for values between `s-1` and `s-0.5` and `m+0.5` and `m+1` (and also the previous rule)
+- we will generate integer value `c` from the previous rule and for float values between `s-1` and `s-0.5` and between `m+0.5` and `m+1`.
 
 those rules are deduced from the geometric relation of the rectangles area.
